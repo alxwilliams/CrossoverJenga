@@ -46,9 +46,8 @@ public class JengaStack : MonoBehaviour
                 break;
         }
 
-        piece.transform.position = piece.transform.position + 
-                                   Vector3.up * (piece.transform.localScale.y * 
-                                   (int)Math.Floor((pieceList.Count-1) / 3f));
+        piece.transform.position += Vector3.up * (piece.transform.localScale.y * 
+                                                  (int)Math.Floor((pieceList.Count-1) / 3f));
 
         piece.gameObject.SetActive(true);
     }
