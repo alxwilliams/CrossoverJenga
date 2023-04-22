@@ -1,6 +1,13 @@
 using System;
 using System.Collections.Generic;
 
+public struct Grades
+{
+    public const string SIXTH_GRADE = "6th Grade";
+    public const string SEVENTH_GRADE = "7th Grade";
+    public const string EIGH_GRADE = "8th Grade";
+}
+
 [Serializable]
 public class AllPieces
 {

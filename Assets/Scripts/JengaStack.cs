@@ -1,18 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class JengaStack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<Piece> pieceList;
+    
+    private void Start()
     {
-        
+        pieceList = new List<Piece>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddPiece(Piece piece)
     {
+        pieceList.Add(piece);
+        piece.transform.parent = transform;
         
+        switch (pieceList.Count % 3 )
+        {
+            case 1:
+                piece.transform.position = transform.position - (Vector3.forward * piece.transform.localScale.z);
+                break;
+            case 2:
+                piece.transform.position = transform.position;
+                break;
+            case 0:
+                piece.transform.position = transform.position + (Vector3.forward * piece.transform.localScale.z);
+                break;
+        }
+
+        piece.transform.position = piece.transform.position + 
+                                   Vector3.up * (piece.transform.localScale.y * 
+                                   (int)Math.Floor(pieceList.Count / 3f));
+
+        piece.gameObject.SetActive(true);
     }
 }

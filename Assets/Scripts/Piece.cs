@@ -6,6 +6,7 @@ using UnityEngine;
 
 public enum PieceType
 {
+    Nothing,
     Glass,
     Wood,
     Stone
@@ -15,40 +16,33 @@ public class Piece : MonoBehaviour
 {
     [SerializeField] private TMP_Text frontText;
     [SerializeField] private TMP_Text backText;
+    [SerializeField] private MeshRenderer renderer;
+    
 
-    private PieceType type;
+    private PieceType type = PieceType.Nothing;
 
     public PieceType Type
     {
         get => type;
-        set
-        {
-            type = value;
-            SetType();
-        }
+        set => type = value;
     }
-
-    private void SetText(string value)
+    public void SetText(string value)
     {
         
         frontText.text = value;
         backText.text = value;
     }
 
-    private void SetType()
+    public void SetMaterial(Material mat)
     {
-        switch (type)
-        {
-            case PieceType.Glass:
-                SetText("");
-                break;
-            case PieceType.Wood:
-                SetText("Learned");
-                break;
-            case PieceType.Stone:
-                SetText("Mastered");
-                break;
-        }
+        renderer.material = mat;
     }
+
+    public void DeactivatePiece()
+    {
+        gameObject.SetActive(false);
+        transform.parent = StackManager.I.PiecePoolParent;
+    }
+
 
 }

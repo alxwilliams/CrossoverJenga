@@ -3,9 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Bootstrapper : MonoBehaviour
+public class APICall : MonoBehaviour
 {
-
     [SerializeField] private string apiURL;
     private AllPieces allPieces;
 
@@ -21,21 +20,15 @@ public class Bootstrapper : MonoBehaviour
 
     private IEnumerator GetRequest(string url, Action<string> callback)
     {
-        string response;
-
         UnityWebRequest request = UnityWebRequest.Get(url);
         request.downloadHandler = new DownloadHandlerBuffer();
 
         yield return request.SendWebRequest();
 
         if (request.error != null)
-        {
             callback(request.error);
-        }
         else
-        {
             callback(request.downloadHandler.text);
-        }
     }
 
     private void LoadJsonDataCallback(string result)
@@ -44,6 +37,7 @@ public class Bootstrapper : MonoBehaviour
         {
             result = "{\"list\": " + result + "}";
             allPieces = JsonUtility.FromJson<AllPieces>(result);
+            StackManager.I.SetAllPieces(allPieces);
         }
         else
         {
