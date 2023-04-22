@@ -5,6 +5,7 @@ public struct GameSettings
 {
     public const float SPACE_BETWEEN_PIECES = .7f;
     public const float CAMERA_SPIN_CAP= 280;
+    public const float DESCRIPTION_TEXT_DISAPPEAR_LENGTH= 6f;
 }
 public struct Grades
 {

@@ -176,7 +176,7 @@ public class StackManager : MonoBehaviour
     /// </summary>
     private IEnumerator TurnTextOff()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(GameSettings.DESCRIPTION_TEXT_DISAPPEAR_LENGTH);
         descriptionText.text = "";
         textGameObject.SetActive(false);
     }
