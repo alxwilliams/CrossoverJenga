@@ -16,10 +16,10 @@ public struct Grades
 [Serializable]
 public class AllPieces
 {
-    public List<JengaPiece> list;
+    public List<PieceData> list;
 }
 [Serializable]
-public class JengaPiece
+public class PieceData
 {
     public int id;
     public string subject;

@@ -53,6 +53,7 @@ MonoBehaviour:
   frontText: {fileID: 370849679992862854}
   backText: {fileID: 7622950231725711123}
   renderer: {fileID: 4193666481415476241}
+  rigidbody: {fileID: 1969634929272905687}
 --- !u!33 &8150885679556048861
 MeshFilter:
   m_ObjectHideFlags: 0

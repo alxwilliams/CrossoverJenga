@@ -18,6 +18,9 @@ public class APICall : MonoBehaviour
         StartCoroutine(GetRequest(apiURL, LoadJsonDataCallback));
     }
 
+    /// <summary>
+    ///  attempts to get API data
+    /// </summary>
     private IEnumerator GetRequest(string url, Action<string> callback)
     {
         UnityWebRequest request = UnityWebRequest.Get(url);
@@ -31,6 +34,9 @@ public class APICall : MonoBehaviour
             callback(request.downloadHandler.text);
     }
 
+    /// <summary>
+    /// load data into the stack manager. If no data is present, Create error
+    /// </summary>
     private void LoadJsonDataCallback(string result)
     {
         if (result != null)

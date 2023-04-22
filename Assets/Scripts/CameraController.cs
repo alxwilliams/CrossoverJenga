@@ -18,6 +18,15 @@ public class CameraController : MonoBehaviour
     }
     void Update()
     {
+        RotateCamera();
+        SwitchCameraAnchor();
+    }
+
+    /// <summary>
+    /// rotates the camera around the currently anchored tower via mouseclick
+    /// </summary>
+    private void RotateCamera()
+    {
         if (Input.GetMouseButtonUp(0))
         {
             mouseDown = false;
@@ -36,7 +45,12 @@ public class CameraController : MonoBehaviour
             mouseDown = true;
             mousePressedPosition = Input.mousePosition;
         }
-        
+    }
+    /// <summary>
+    /// Switches between the positions of the towers via right or left arrow key
+    /// </summary>
+    private void SwitchCameraAnchor()
+    {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Vector3 distanceFromCurrentStack = transform.position - stacks[currentStackNum].transform.position;
