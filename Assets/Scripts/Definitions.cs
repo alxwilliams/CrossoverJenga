@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+public struct GameSettings
+{
+    public const float SPACE_BETWEEN_PIECES = .7f;
+}
 public struct Grades
 {
     public const string SIXTH_GRADE = "6th Grade";
